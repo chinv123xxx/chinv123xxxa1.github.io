@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>VJ GROUP</title>
+
+<link rel="stylesheet" href="vjgroup.css">
+<script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js"></script>
+</head>
+
+<body>
+
+<header>
+  <button class="back" onclick="location.href='../index/index.html'">⬅</button>
+  <div>
+    <h1>ระบบสั่งซื้อสินค้า</h1>
+    <p>ผู้จัดส่ง : บริษัท วีเจ กรุ๊ป</p>
+  </div>
+</header>
+
+<main>
+<section>
+  <h2>เลือกรายการ</h2>
+
+  <div class="flex">
+    <select id="product">
+      <optgroup label="รายการ">
+        <option>สามชั้นสไลด์vj(ถุง 5 kg.)</option>
+        <option>สามชั้นหมักนุ่มvj M1 (ถุงชมพู)</option>
+        <option>หมึกกรอบ ตัว(ใหญ่) ยางเขียว/แดง</option>
+        <option>ขายำ</option>
+        <option>สองชั้นสไลด์ลอกหนัง(แพ็ค 1 kg.)</option>
+      </optgroup>
+    </select>
+
+    <input type="number" id="qty" placeholder="จำนวน" step="0.1" min="0">
+    <select id="unit">
+      <option>กก.</option>
+      <option>ขีด</option>
+      <option>แพ็ค</option>
+    </select>
+    <input type="text" id="note" placeholder="หมายเหตุ (ถ้ามี)">
+    <button class="primary" onclick="addOrder()">➕ เพิ่มรายการ</button>
+  </div>
+
+  <table>
+    <thead>
+      <tr>
+        <th>รายการ</th>
+        <th>จำนวน</th>
+        <th>หมายเหตุ</th>
+        <th>ลบ</th>
+      </tr>
+    </thead>
+    <tbody id="orderList"></tbody>
+  </table>
+
+  <div class="flex">
+    <button class="danger" onclick="clearAll()">ล้างทั้งหมด</button>
+    <button class="primary" onclick="openSummary()">เสร็จสิ้น</button>
+  </div>
+</section>
+</main>
+
+<!-- ===== สรุปรายการ ===== -->
+<div id="summaryModal" class="modal">
+  <div class="modal-box" id="summaryBox">
+    <h3>สรุปรายการสั่ง (VJ GROUP)</h3>
+    <div class="datetime" id="dt"></div>
+
+    <table>
+      <thead>
+        <tr>
+          <th>รายการ</th>
+          <th>จำนวน</th>
+          <th>หมายเหตุ</th>
+        </tr>
+      </thead>
+      <tbody id="summaryList"></tbody>
+    </table>
+
+    <div class="flex capture-buttons">
+      <button class="primary" onclick="saveImg()">บันทึกรูป</button>
+      <button class="danger" onclick="closeSummary()">ปิด</button>
+    </div>
+  </div>
+</div>
+
+<script src="vjgroup.js"></script>
+</body>
+</html>

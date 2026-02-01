@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CHAN FOOD</title>
+
+<link rel="stylesheet" href="chanfood.css">
+<script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js"></script>
+</head>
+
+<body>
+
+<header>
+  <button class="back" onclick="location.href='../index/index.html'">⬅</button>
+  <div>
+    <h1>ระบบสั่งซื้อสินค้า</h1>
+    <p>ผู้จัดส่ง : CHAN FOOD (ชาญฟูดส์)</p>
+  </div>
+</header>
+
+<main>
+<section>
+  <h2>เลือกรายการ</h2>
+
+  <div class="flex">
+    <select id="product">
+      <optgroup label="รายการ">
+        <option>3 ชั้นหมักนุ่ม A 5 kg.</option>
+        <option>หมูหมักพริกไทยดำ A 5 kg.</option>
+        <option>หมูหนักเกาหลี A 5 kg.</option>
+        <option>2 ชั้นหมักงา 5 kg.</option>
+        <option>เต้าหู้ปลา 500 กรัม</option>
+        <option>เปาทูโทนไส้ไข่กุ้ง</option>
+        <option>ปูอัดทูโทนใส้ชีส</option>
+        <option>ปูหลอด 500 กรัม</option>
+        <option>ฟรุ๊ตตี้ฟิชเค้ก TVI 500 กรัม</option>
+        <option>ซาลาเปาปลาไส้ครีมชีส</option>
+        <option>ปูทอง 500 กรัม</option>
+        <option>บุกไข่ไม่มีตรา</option>
+        <option>เส้นแก้วใหญ่(ธนา) 1 kg.</option>
+        <option>เต้าหู้ไข่ ตรา นางฟ้า</option>
+        <option>ตับหมู(10 kg./กล่อง)</option>
+        <option>หนวดหมึกเรด้า</option>
+        <option>ขายำ</option>
+      </optgroup>
+    </select>
+
+    <input type="number" id="qty" placeholder="จำนวน" step="0.1" min="0">
+    <select id="unit">
+      <option>กก.</option>
+      <option>ขีด</option>
+      <option>แพ็ค</option>
+    </select>
+    <input type="text" id="note" placeholder="หมายเหตุ (ถ้ามี)">
+    <button class="primary" onclick="addOrder()">➕ เพิ่มรายการ</button>
+  </div>
+
+  <table>
+    <thead>
+      <tr>
+        <th>รายการ</th>
+        <th>จำนวน</th>
+        <th>หมายเหตุ</th>
+        <th>ลบ</th>
+      </tr>
+    </thead>
+    <tbody id="orderList"></tbody>
+  </table>
+
+  <div class="flex">
+    <button class="danger" onclick="clearAll()">ล้างทั้งหมด</button>
+    <button class="primary" onclick="openSummary()">เสร็จสิ้น</button>
+  </div>
+</section>
+</main>
+
+<!-- ===== สรุปรายการ ===== -->
+<div id="summaryModal" class="modal">
+  <div class="modal-box" id="summaryBox">
+    <h3>สรุปรายการสั่ง (CHAN FOOD)</h3>
+    <div class="datetime" id="dt"></div>
+
+    <table>
+      <thead>
+        <tr>
+          <th>รายการ</th>
+          <th>จำนวน</th>
+          <th>หมายเหตุ</th>
+        </tr>
+      </thead>
+      <tbody id="summaryList"></tbody>
+    </table>
+
+    <div class="flex capture-buttons">
+      <button class="primary" onclick="saveImg()">บันทึกรูป</button>
+      <button class="danger" onclick="closeSummary()">ปิด</button>
+    </div>
+  </div>
+</div>
+
+<script src="chanfood.js"></script>
+</body>
+</html>
